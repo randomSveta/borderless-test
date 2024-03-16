@@ -6,6 +6,7 @@ import CandidatePage from "./pages/CandidatePage";
 
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
+import ThemeWrapper from "./ThemeWrapper";
 
 import "./App.scss";
 
@@ -13,20 +14,20 @@ type AppProps = {};
 
 const App: React.FC<AppProps> = () => {
   return (
-    <BrowserRouter>
-      <header>
+    <ThemeWrapper>
+      <BrowserRouter>
         <NavigationBar />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<DirectCandidatesPage />} />
-          <Route path="/candidate/:id" element={<CandidatePage />} />
-        </Routes>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
-    </BrowserRouter>
+        <main>
+          <Routes>
+            <Route path="/" element={<DirectCandidatesPage />} />
+            <Route path="/candidate/:username" element={<CandidatePage />} />
+          </Routes>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </BrowserRouter>
+    </ThemeWrapper>
   );
 };
 
