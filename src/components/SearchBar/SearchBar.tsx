@@ -2,18 +2,26 @@ import React, { useState } from "react";
 
 import { ISearchBarProps } from "./interfaces";
 
-import { TextField, List, ListItem, ListItemText } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const SearchBar: React.FC<ISearchBarProps> = ({
-  onSearch,
   candidates = [],
+  setFilteredCandidates,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (searchQuery: string) => {
+    const filtered = candidates.filter((candidate) =>
+      candidate.name.first.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+    console.log(filtered);
+    setFilteredCandidates(filtered);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearchQuery(value);
-    onSearch(value);
+    handleSearch(value);
   };
 
   return (
@@ -23,16 +31,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({
         variant="outlined"
         value={searchQuery}
         onChange={handleChange}
-        autoComplete="off"
       />
-      <List>
-        {candidates &&
-          candidates.map((candidate, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={candidate} />
-            </ListItem>
-          ))}
-      </List>
     </div>
   );
 };

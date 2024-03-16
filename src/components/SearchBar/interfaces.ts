@@ -1,4 +1,6 @@
+import React from "react";
+import { ICandidate } from "../../pages/DirectCandidatesPage/interfaces";
 export interface ISearchBarProps {
-  onSearch: (query: string) => void;
-  candidates?: string[];
+  setFilteredCandidates: React.Dispatch<React.SetStateAction<ICandidate[]>>;
+  candidates: ICandidate[] | [];
 }

@@ -9,9 +9,9 @@ import SearchBar from "../../components/SearchBar";
 
 const DirectCandidatesPage: React.FC = () => {
   const [candidateList, setCandidateList] = useState<ICandidate[]>([]);
-  const [filteredCandidates, setFilteredCandidates] = useState<ICandidate[]>(
-    [],
-  );
+  const [filteredCandidates, setFilteredCandidates] = useState<
+    ICandidate[] | []
+  >([]);
   const [isCandidateListLoaded, setIsCandidateListLoaded] =
     useState<boolean>(false);
   const [candidatesLoadingError, setCandidateLoadingError] =
@@ -35,14 +35,7 @@ const DirectCandidatesPage: React.FC = () => {
     setFilteredCandidates(candidateList);
   }, [candidateList]);
 
-  const handleSearch = (searchQuery: string) => {
-    const filtered = candidateList.filter((candidate) =>
-      candidate.name.first.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
-    setFilteredCandidates(filtered);
-  };
-
-  const candidatesList = candidatesLoadingError ? (
+  const candidateProfileList = candidatesLoadingError ? (
     <ErrorAxios error={candidatesLoadingError} />
   ) : (
     <ul>
@@ -58,8 +51,11 @@ const DirectCandidatesPage: React.FC = () => {
         <h1>Direct Candidates</h1>
         <p>These candidates have applied to you directly</p>
       </Paper>
-      <SearchBar onSearch={handleSearch} />
-      {isCandidateListLoaded ? candidatesList : <CircularProgress />}
+      <SearchBar
+        setFilteredCandidates={setFilteredCandidates}
+        candidates={candidateList}
+      />
+      {isCandidateListLoaded ? candidateProfileList : <CircularProgress />}
     </div>
   );
 };
