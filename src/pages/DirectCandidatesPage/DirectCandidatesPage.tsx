@@ -6,6 +6,7 @@ import { ICandidate } from "./interfaces";
 import { CircularProgress, Paper } from "@mui/material";
 import ErrorAxios from "../../components/ErrorAxios";
 import SearchBar from "../../components/SearchBar";
+import CandidateList from "../../components/CandidateList";
 
 const DirectCandidatesPage: React.FC = () => {
   const [candidateList, setCandidateList] = useState<ICandidate[]>([]);
@@ -38,11 +39,7 @@ const DirectCandidatesPage: React.FC = () => {
   const candidateProfileList = candidatesLoadingError ? (
     <ErrorAxios error={candidatesLoadingError} />
   ) : (
-    <ul>
-      {filteredCandidates.map((candidateInfo, index) => (
-        <li key={`candidate-${index}`}>{candidateInfo.name.first}</li>
-      ))}
-    </ul>
+    <CandidateList filteredCandidates={filteredCandidates} />
   );
 
   return (
