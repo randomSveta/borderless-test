@@ -136,9 +136,15 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["import"]
+        "ignoreAtRules": ["import", "mixin", "include"]
       }
     ],
-    "import-notation": "string"
+    "import-notation": "string",
+    "selector-class-pattern": [
+      "^(?:[A-Z][a-zA-Z0-9]*|[a-z][a-z0-9]*(-[a-z0-9]+)*)(__[a-z][a-zA-Z0-9]*)?$",
+      {
+        "message": "Class names should follow UpperCamelCase, kebab-case or BEM convention."
+      }
+    ]
   }
 }
