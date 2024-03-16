@@ -1,14 +1,19 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import DirectCandidatesPage from "./pages/DirectCandidatesPage";
 import CandidatePage from "./pages/CandidatePage";
+
+import NavigationBar from "./components/NavigationBar";
 
 type AppProps = {};
 
 const App: React.FC<AppProps> = () => {
   return (
     <BrowserRouter>
-      <header></header>
+      <header>
+        <NavigationBar />
+      </header>
       <main>
         <Routes>
           <Route path="/" element={<DirectCandidatesPage />} />
