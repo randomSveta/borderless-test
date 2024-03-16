@@ -22,6 +22,7 @@ Start the project:
 - https://stylelint.io/
 - https://mui.com/material-ui/
 - https://prettier.io/
+- https://getbem.com
 
 - https://randomuser.me/
 - https://www.npmjs.com/package/axios
