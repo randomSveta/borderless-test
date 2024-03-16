@@ -27,24 +27,24 @@ const DirectCandidatesPage: React.FC = () => {
       });
   }, []);
 
-  return isCandidateListLoaded ? (
-    candidatesLoadingError ? (
-      <ErrorAxios error={candidatesLoadingError} />
-    ) : (
-      <div>
-        <Paper elevation={3}>
-          <h1>Direct Candidates</h1>
-          <p>These candidates have applied to you directly</p>
-        </Paper>
-        <ul>
-          {candidateList.map((candidateInfo, index) => (
-            <li key={`candidate-${index}`}>{candidateInfo.name.first}</li>
-          ))}
-        </ul>
-      </div>
-    )
+  const candidatesList = candidatesLoadingError ? (
+    <ErrorAxios error={candidatesLoadingError} />
   ) : (
-    <CircularProgress />
+    <ul>
+      {candidateList.map((candidateInfo, index) => (
+        <li key={`candidate-${index}`}>{candidateInfo.name.first}</li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <div className="DirectCandidatesPage">
+      <Paper elevation={3}>
+        <h1>Direct Candidates</h1>
+        <p>These candidates have applied to you directly</p>
+      </Paper>
+      {isCandidateListLoaded ? candidatesList : <CircularProgress />}
+    </div>
   );
 };
 
