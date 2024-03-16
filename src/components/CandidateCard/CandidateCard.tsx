@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const CandidateCard: React.FC = ({ candidate }) => {
   const { picture, name, location, login } = candidate;
-  console.log(candidate);
   return (
     <Link
       to={`/candidate/${login.username}`}

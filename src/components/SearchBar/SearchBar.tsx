@@ -14,7 +14,6 @@ const SearchBar: React.FC<ISearchBarProps> = ({
     const filtered = candidates.filter((candidate) =>
       candidate.name.first.toLowerCase().includes(searchQuery.toLowerCase()),
     );
-    console.log(filtered);
     setFilteredCandidates(filtered);
   };
 
