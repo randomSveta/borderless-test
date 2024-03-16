@@ -6,7 +6,7 @@ import { Alert } from "@mui/material";
 
 const ErrorAxios: React.FC<IAxiosErrorProps> = ({ error }) => {
   return (
-    <Alert severity="error">
+    <Alert severity="error" className="ErrorAxios">
       {error.response ? (
         <div>
           <p>Status Code: {error.response.status}</p>

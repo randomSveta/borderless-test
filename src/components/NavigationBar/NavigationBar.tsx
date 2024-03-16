@@ -5,7 +5,7 @@ import { AppBar, Toolbar, Button } from "@mui/material";
 
 const NavigationBar: React.FC = () => {
   return (
-    <AppBar position="static">
+    <AppBar className="NavigationBar" position="static">
       <Toolbar>
         <Button component={Link} to="/" color="inherit">
           Candidates

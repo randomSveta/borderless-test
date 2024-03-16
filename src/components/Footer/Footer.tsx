@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Container } from "@mui/material";
 
 const Footer: React.FC = () => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar className="Footer" position="static" color="primary">
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="body1" color="inherit">

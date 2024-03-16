@@ -14,6 +14,7 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
     <Link
       to={`/candidate/${login.username}`}
       style={{ textDecoration: "none" }}
+      className="CandidateCard"
     >
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>

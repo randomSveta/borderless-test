@@ -9,7 +9,7 @@ const CandidatePage: React.FC = () => {
   const { id } = useParams<Params>();
 
   return (
-    <div>
+    <div className="CandidatePage">
       <h1>Candidate profile id: {id}!</h1>
     </div>
   );
