@@ -1,19 +1,42 @@
+import React, { useState } from "react";
 import { ICandidateListProps } from "./interfaces";
-
 import CandidateCard from "../../components/CandidateCard";
-import { List, ListItem } from "@mui/material";
+import { List, ListItem, Pagination } from "@mui/material";
 
 const CandidateList: React.FC<ICandidateListProps> = ({
   filteredCandidates,
 }) => {
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 8;
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
   return (
-    <List>
-      {filteredCandidates.map((candidateInfo, index) => (
-        <ListItem key={`candidate-${index}`}>
-          <CandidateCard candidate={candidateInfo} />
-        </ListItem>
-      ))}
-    </List>
+    <div className="CandidateList">
+      <List>
+        {filteredCandidates
+          .map((candidateInfo) => (
+            <ListItem key={`candidate-${candidateInfo.login.username}`}>
+              <CandidateCard candidate={candidateInfo} />
+            </ListItem>
+          ))
+          .slice(startIndex, endIndex)}
+      </List>
+      {filteredCandidates.length > 8 ? (
+        <Pagination
+          count={Math.ceil(filteredCandidates.length / itemsPerPage)}
+          page={page}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+        />
+      ) : null}
+    </div>
   );
 };
 
