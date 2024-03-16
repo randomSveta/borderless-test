@@ -9,7 +9,9 @@ import SearchBar from "../../components/SearchBar";
 import CandidateList from "../../components/CandidateList";
 
 const DirectCandidatesPage: React.FC = () => {
-  const [candidateList, setCandidateList] = useState<ICandidate[]>([]);
+  const [candidateList, setCandidateList] = useState<ICandidate[]>(
+    JSON.parse(sessionStorage.getItem("candidates") || []),
+  );
   const [filteredCandidates, setFilteredCandidates] = useState<
     ICandidate[] | []
   >([]);
@@ -19,17 +21,25 @@ const DirectCandidatesPage: React.FC = () => {
     useState<AxiosError | null>(null);
 
   useEffect(() => {
-    axios
-      .get("https://randomuser.me/api/?results=100")
-      .then((response) => {
-        setCandidateList(response.data.results);
-        setIsCandidateListLoaded(true);
-      })
-      .catch((error: AxiosError) => {
-        console.error("Error fetching data:", error);
-        setCandidateLoadingError(error);
-        setIsCandidateListLoaded(true);
-      });
+    if (!candidateList.length) {
+      axios
+        .get("https://randomuser.me/api/?results=100")
+        .then((response) => {
+          setCandidateList(response.data.results);
+          sessionStorage.setItem(
+            "candidates",
+            JSON.stringify(response.data.results),
+          );
+          setIsCandidateListLoaded(true);
+        })
+        .catch((error: AxiosError) => {
+          console.error("Error fetching data:", error);
+          setCandidateLoadingError(error);
+          setIsCandidateListLoaded(true);
+        });
+    } else {
+      setIsCandidateListLoaded(true);
+    }
   }, []);
 
   useEffect(() => {
