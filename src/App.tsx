@@ -5,6 +5,7 @@ import DirectCandidatesPage from "./pages/DirectCandidatesPage";
 import CandidatePage from "./pages/CandidatePage";
 
 import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
 
 type AppProps = {};
 
