@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
+
+import { ICandidate } from "../../pages/DirectCandidatesPage/interfaces";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { Link } from "react-router-dom";
 
-const CandidateCard: React.FC = ({ candidate }) => {
+const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
   const { picture, name, location, login } = candidate;
   return (
     <Link

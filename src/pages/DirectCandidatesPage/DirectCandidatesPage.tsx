@@ -10,7 +10,7 @@ import CandidateList from "../../components/CandidateList";
 
 const DirectCandidatesPage: React.FC = () => {
   const [candidateList, setCandidateList] = useState<ICandidate[]>(
-    JSON.parse(sessionStorage.getItem("candidates") || []),
+    JSON.parse(sessionStorage.getItem("candidates") || "[]") || [],
   );
   const [filteredCandidates, setFilteredCandidates] = useState<
     ICandidate[] | []
