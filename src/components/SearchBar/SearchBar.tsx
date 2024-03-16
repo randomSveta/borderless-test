@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-
 import { ISearchBarProps } from "./interfaces";
-
-import { TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 
 const SearchBar: React.FC<ISearchBarProps> = ({
   candidates = [],
@@ -11,9 +9,11 @@ const SearchBar: React.FC<ISearchBarProps> = ({
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (searchQuery: string) => {
-    const filtered = candidates.filter((candidate) =>
-      candidate.name.first.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
+    const filtered = candidates.filter((candidate) => {
+      const { name } = candidate;
+      const fullName = `${name.first} ${name.last}`;
+      return fullName.toLowerCase().includes(searchQuery.toLowerCase());
+    });
     setFilteredCandidates(filtered);
   };
 
@@ -24,14 +24,23 @@ const SearchBar: React.FC<ISearchBarProps> = ({
   };
 
   return (
-    <div>
-      <TextField
-        label="Search"
-        variant="outlined"
-        value={searchQuery}
-        onChange={handleChange}
-      />
-    </div>
+    <Autocomplete
+      className="SearchBar"
+      freeSolo
+      options={candidates.map(
+        (candidate) => `${candidate.name.first} ${candidate.name.last}`,
+      )}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Search"
+          variant="outlined"
+          value={searchQuery}
+          onChange={handleChange}
+          autoComplete="on"
+        />
+      )}
+    />
   );
 };
 
