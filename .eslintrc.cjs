@@ -29,5 +29,9 @@ module.exports = {
     "react/jsx-uses-react": ["off"],
     "react/jsx-props-no-spreading": ["warn"],
     "react/no-unescaped-entities": ["off"],
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      { prefixWithI: "always" },
+    ],
   },
 };
