@@ -1,7 +1,16 @@
-const CandidatePage = () => {
+import React from "react";
+import { useParams } from "react-router-dom";
+
+interface Params {
+  [key: string]: string | undefined;
+}
+
+const CandidatePage: React.FC = () => {
+  const { id } = useParams<Params>();
+
   return (
     <div>
-      <h1>Hello, Candidate!</h1>
+      <h1>Candidate profile id: {id}!</h1>
     </div>
   );
 };
