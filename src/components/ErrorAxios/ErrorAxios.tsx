@@ -1,12 +1,10 @@
 import React from "react";
-import { AxiosError } from "axios";
+
+import { IAxiosErrorProps } from "./interfaces";
+
 import { Alert } from "@mui/material";
 
-interface Props {
-  error: AxiosError;
-}
-
-const ErrorAxios: React.FC<Props> = ({ error }) => {
+const ErrorAxios: React.FC<IAxiosErrorProps> = ({ error }) => {
   return (
     <Alert severity="error">
       {error.response ? (
