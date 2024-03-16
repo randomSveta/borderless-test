@@ -5,9 +5,13 @@ import { ICandidate } from "./interfaces";
 
 import { CircularProgress, Paper } from "@mui/material";
 import ErrorAxios from "../../components/ErrorAxios";
+import SearchBar from "../../components/SearchBar";
 
 const DirectCandidatesPage: React.FC = () => {
   const [candidateList, setCandidateList] = useState<ICandidate[]>([]);
+  const [filteredCandidates, setFilteredCandidates] = useState<ICandidate[]>(
+    [],
+  );
   const [isCandidateListLoaded, setIsCandidateListLoaded] =
     useState<boolean>(false);
   const [candidatesLoadingError, setCandidateLoadingError] =
@@ -27,11 +31,22 @@ const DirectCandidatesPage: React.FC = () => {
       });
   }, []);
 
+  useEffect(() => {
+    setFilteredCandidates(candidateList);
+  }, [candidateList]);
+
+  const handleSearch = (searchQuery: string) => {
+    const filtered = candidateList.filter((candidate) =>
+      candidate.name.first.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+    setFilteredCandidates(filtered);
+  };
+
   const candidatesList = candidatesLoadingError ? (
     <ErrorAxios error={candidatesLoadingError} />
   ) : (
     <ul>
-      {candidateList.map((candidateInfo, index) => (
+      {filteredCandidates.map((candidateInfo, index) => (
         <li key={`candidate-${index}`}>{candidateInfo.name.first}</li>
       ))}
     </ul>
@@ -43,6 +58,7 @@ const DirectCandidatesPage: React.FC = () => {
         <h1>Direct Candidates</h1>
         <p>These candidates have applied to you directly</p>
       </Paper>
+      <SearchBar onSearch={handleSearch} />
       {isCandidateListLoaded ? candidatesList : <CircularProgress />}
     </div>
   );
