@@ -8,7 +8,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<DirectCandidatesPage />} />
-          <Route path="/user/:id" element={<CandidatePage />} />
+          <Route path="/candidate/:id" element={<CandidatePage />} />
         </Routes>
       </div>
     </BrowserRouter>
