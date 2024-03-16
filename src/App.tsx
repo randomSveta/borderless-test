@@ -7,6 +7,8 @@ import CandidatePage from "./pages/CandidatePage";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 
+import "./App.scss";
+
 type AppProps = {};
 
 const App: React.FC<AppProps> = () => {
@@ -21,7 +23,9 @@ const App: React.FC<AppProps> = () => {
           <Route path="/candidate/:id" element={<CandidatePage />} />
         </Routes>
       </main>
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </BrowserRouter>
   );
 };
