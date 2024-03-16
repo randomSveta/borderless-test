@@ -8,12 +8,14 @@ type AppProps = {};
 const App: React.FC<AppProps> = () => {
   return (
     <BrowserRouter>
-      <div>
+      <header></header>
+      <main>
         <Routes>
           <Route path="/" element={<DirectCandidatesPage />} />
           <Route path="/candidate/:id" element={<CandidatePage />} />
         </Routes>
-      </div>
+      </main>
+      <footer></footer>
     </BrowserRouter>
   );
 };
