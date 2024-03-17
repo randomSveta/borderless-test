@@ -41,18 +41,18 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
             </div>
             <div className="candidate-info__secondary">
               {rows.map((row, index) => (
-                <>
-                  <div className="contacts">
-                    <Typography variant="body3" color="text.secondary">
-                      <span>{row.name}&nbsp;</span>
-                    </Typography>
-                    <Typography variant="body3">
-                      <span>{row.data}</span>
-                    </Typography>
-                  </div>
+                <div className="contacts" key={index}>
+                  <Typography
+                    className="contacts__row"
+                    variant="body3"
+                    color="text.secondary"
+                  >
+                    <span>{row.name}&nbsp;</span>
+                    <span>{row.data}</span>
+                  </Typography>
 
-                  {index !== rows.length - 1 ? <Divider /> : null}
-                </>
+                  {index < rows.length - 1 ? <Divider /> : null}
+                </div>
               ))}
             </div>
           </CardContent>
