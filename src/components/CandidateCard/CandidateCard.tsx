@@ -7,10 +7,20 @@ import {
   CardMedia,
   CardContent,
   Card,
+  Divider,
 } from "@mui/material";
 
+import "./CandidateCard.scss";
+
 const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
-  const { picture, name, location, login } = candidate;
+  const { picture, name, location, login, email } = candidate;
+
+  const rows = [
+    { name: "Location", data: location.city },
+    { name: "Email", data: email },
+  ];
+
+  console.log(rows);
   return (
     <Link to={`/candidate/${login.username}`} className="CandidateCard">
       <Card>
@@ -20,14 +30,32 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
             image={picture.large}
             alt={`Photo ${name.first} ${name.last}`}
           />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {`${name.title} ${name.first} ${name.last}`}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {location.country}
-              <br />
-            </Typography>
+          <CardContent className="candidate-info">
+            <div className="candidate-info__main">
+              <Typography gutterBottom variant="h5" component="div">
+                <span>{`${name.first} ${name.last}`}</span>
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {location.country}
+              </Typography>
+              <span>BORDERLESS VERIFIED</span> {/* don't have data to map */}
+            </div>
+            <div className="candidate-info__secondary">
+              {rows.map((row, index) => (
+                <>
+                  <div className="contacts">
+                    <Typography variant="body3" color="text.secondary">
+                      <span>{row.name}&nbsp;</span>
+                    </Typography>
+                    <Typography variant="body3">
+                      <span>{row.data}</span>
+                    </Typography>
+                  </div>
+
+                  {index !== rows.length - 1 ? <Divider /> : null}
+                </>
+              ))}
+            </div>
           </CardContent>
         </CardActionArea>
       </Card>
