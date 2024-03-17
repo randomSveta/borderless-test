@@ -23,7 +23,9 @@ const DirectCandidatesPage: React.FC = () => {
   useEffect(() => {
     if (!candidateList.length) {
       axios
-        .get("https://randomuser.me/api/?results=100")
+        .get(
+          "https://randomuser.me/api/?results=60&inc=name,gender,nat,login&noinfo",
+        )
         .then((response) => {
           setCandidateList(response.data.results);
           sessionStorage.setItem(
