@@ -5,6 +5,8 @@ import { ICandidateListProps } from "./interfaces";
 import CandidateCard from "../../components/CandidateCard";
 import { List, ListItem, Pagination } from "@mui/material";
 
+import "./CandidateList.scss";
+
 const CandidateList: React.FC<ICandidateListProps> = ({
   filteredCandidates,
 }) => {

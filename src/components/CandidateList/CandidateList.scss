@@ -1,0 +1,37 @@
+@import "../../styles/mixins";
+
+.CandidateList {
+  @include flex($spacing: stretch, $alignment: stretch, $direction: column, $wrap: nowrap);
+
+  flex: 1;
+
+  .candidate-list {
+    display: grid;
+    flex: 1;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    @media (width <= 480px) {
+      grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    @media (width >= 481px) and (width <= 768px) {
+      grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+    }
+
+    .candidate-list__item {
+      @include flex(center, center);
+
+      padding: 0;
+
+      > a {
+        flex: 1;
+      }
+    }
+  }
+
+  .Pagination {
+    margin-top: auto;
+  }
+}
