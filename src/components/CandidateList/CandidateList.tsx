@@ -11,7 +11,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
   filteredCandidates,
 }) => {
   const [page, setPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
 
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -34,7 +34,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
           ))
           .slice(startIndex, endIndex)}
       </List>
-      {filteredCandidates.length > 6 ? (
+      {filteredCandidates.length > 8 ? (
         <Pagination
           className="Pagination"
           count={Math.ceil(filteredCandidates.length / itemsPerPage)}
