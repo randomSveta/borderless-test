@@ -23,6 +23,7 @@ Start the project:
 - https://mui.com/material-ui/
 - https://prettier.io/
 - https://getbem.com
+- https://chromewebstore.google.com/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi
 
 - https://randomuser.me/
 - https://www.npmjs.com/package/axios
