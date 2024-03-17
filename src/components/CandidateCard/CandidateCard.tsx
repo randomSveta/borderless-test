@@ -22,12 +22,8 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            height="100"
             image={picture.large}
             alt={`Photo ${name.first} ${name.last}`}
-            sx={{
-              width: "100px",
-            }}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">

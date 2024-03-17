@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { AppBar, Toolbar, Button } from "@mui/material";
 
+import "./NavigationBar.scss";
+
 const NavigationBar: React.FC = () => {
   return (
     <AppBar className="NavigationBar" position="static">

@@ -5,7 +5,17 @@
     $direction: column,
     $wrap: nowrap
   );
-  @include vertical-rhythm(4);
+  @include vertical-rhythm(2);
 
   height: 100%;
+
+  > .direct-candidates__info {
+    @include vertical-rhythm(1);
+
+    padding: 1rem 2rem;
+  }
+
+  > .direct-candidates__filters {
+    @include flex(flex-end);
+  }
 }

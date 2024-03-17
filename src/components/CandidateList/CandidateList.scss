@@ -1,28 +1,21 @@
-@import "../../styles/mixins";
-
 .CandidateList {
-  @include flex(
-    $spacing: stretch,
-    $alignment: stretch,
-    $direction: column,
-    $wrap: nowrap
-  );
+  @include flex($alignment: stretch, $direction: column, $wrap: nowrap);
 
   flex: 1;
 
   .candidate-list {
+    margin-bottom: 2rem;
     padding: 0;
     display: grid;
-    align-items: center;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(4, auto);
+    gap: 2rem;
 
     @media (width <= 480px) {
-      grid-template-columns: 1fr; /* Single column layout */
+      grid-template-columns: auto; /* Single column layout */
     }
 
     @media (width >= 481px) and (width <= 768px) {
-      grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+      grid-template-columns: repeat(2, auto); /* Two-column layout */
     }
 
     .candidate-list__item {
@@ -37,6 +30,8 @@
   }
 
   .Pagination {
+    @include flex(center, center);
+
     margin-top: auto;
   }
 }

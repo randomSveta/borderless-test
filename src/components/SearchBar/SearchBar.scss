@@ -1,0 +1,9 @@
+.SearchBar {
+  width: 30rem;
+
+  .search-text {
+    > div {
+      padding: 0 1rem;
+    }
+  }
+}
