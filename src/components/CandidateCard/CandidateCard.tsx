@@ -18,7 +18,7 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
       className="CandidateCard"
       style={{ textDecoration: "none" }}
     >
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardActionArea>
           <CardMedia
             component="img"
