@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios, { AxiosError } from "axios";
 
 import GlobalContext from "../../GlobalContext";
 
 import { ICandidate } from "./interfaces";
 
-import { CircularProgress, Paper } from "@mui/material";
+import { CircularProgress, Paper, Typography } from "@mui/material";
 import ErrorAxios from "../../components/ErrorAxios";
 import SearchBar from "../../components/SearchBar";
 import CandidateList from "../../components/CandidateList";
@@ -54,14 +54,19 @@ const DirectCandidatesPage: React.FC = () => {
 
   return (
     <div className="DirectCandidatesPage">
-      <Paper elevation={3}>
+      <Paper elevation={1} className="direct-candidates__info">
         <h1>Direct Candidates</h1>
-        <p>These candidates have applied to you directly</p>
+        <Typography variant="body2" color="text.secondary">
+          These candidates have applied to you directly
+        </Typography>
       </Paper>
-      <SearchBar
-        setFilteredCandidates={setFilteredCandidates}
-        candidates={candidateList}
-      />
+      <div className="direct-candidates__filters">
+        <SearchBar
+          setFilteredCandidates={setFilteredCandidates}
+          candidates={candidateList}
+        />
+      </div>
+
       {isCandidateListLoaded ? candidateProfileList : <CircularProgress />}
     </div>
   );
