@@ -11,7 +11,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
   filteredCandidates,
 }) => {
   const [page, setPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 6;
 
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -21,7 +21,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
   };
 
   return (
-    <div className="CandidateList">
+    <section className="CandidateList">
       <List className="candidate-list">
         {filteredCandidates
           .map((candidateInfo) => (
@@ -34,7 +34,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
           ))
           .slice(startIndex, endIndex)}
       </List>
-      {filteredCandidates.length > 8 ? (
+      {filteredCandidates.length > 6 ? (
         <Pagination
           className="Pagination"
           count={Math.ceil(filteredCandidates.length / itemsPerPage)}
@@ -44,7 +44,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
           shape="rounded"
         />
       ) : null}
-    </div>
+    </section>
   );
 };
 
