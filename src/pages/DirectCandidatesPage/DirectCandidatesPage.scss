@@ -1,0 +1,5 @@
+.DirectCandidatesPage{
+  @include flex($spacing: stretch, $alignment: stretch, $direction: column, $wrap: nowrap);
+
+  height: 100%;
+}
