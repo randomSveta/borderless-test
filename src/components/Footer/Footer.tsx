@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="body1" color="inherit">
-            © 2024 Borderless. All rights reserved.
+            © 2024 Sveta K. All rights reserved.
           </Typography>
         </Toolbar>
       </Container>
