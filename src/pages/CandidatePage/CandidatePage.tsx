@@ -20,8 +20,6 @@ const CandidatePage: React.FC = () => {
 
   const apiUrl = useContext(GlobalContext);
 
-  console.log(apiUrl);
-
   useEffect(() => {
     axios
       .get(apiUrl)
@@ -30,8 +28,6 @@ const CandidatePage: React.FC = () => {
           (candidate: { login: { username: string } }) =>
             candidate.login.username === username,
         )[0];
-
-        console.log(currentCandidate);
         setCandidateExpandedData(currentCandidate);
         setIsCandidateDataLoaded(true);
       })

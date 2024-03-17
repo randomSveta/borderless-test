@@ -20,7 +20,6 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
     { name: "Email", data: email },
   ];
 
-  console.log(rows);
   return (
     <Link to={`/candidate/${login.username}`} className="CandidateCard">
       <Card>
