@@ -9,17 +9,15 @@ html, body, #root {
   margin: 0;
 }
 
-
 #root {
-  display: flex;
-  flex-flow: column nowrap; 
-  align-items: stretch;
+  @include flex($spacing: stretch, $alignment: stretch, $direction: column, $wrap: nowrap);
+}
 
-> main {
+main {
   padding: 1rem;
+  flex-grow: 1; /* Take up remaining vertical space */
 }
 
 footer {
   margin-top: auto;
-}
 }
