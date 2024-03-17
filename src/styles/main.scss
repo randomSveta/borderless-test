@@ -4,13 +4,20 @@ html {
   font-size: 10px;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
 }
 
 #root {
-  @include flex($spacing: stretch, $alignment: stretch, $direction: column, $wrap: nowrap);
+  @include flex(
+    $spacing: stretch,
+    $alignment: stretch,
+    $direction: column,
+    $wrap: nowrap
+  );
 }
 
 main {

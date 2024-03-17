@@ -1,5 +1,11 @@
-.DirectCandidatesPage{
-  @include flex($spacing: stretch, $alignment: stretch, $direction: column, $wrap: nowrap);
+.DirectCandidatesPage {
+  @include flex(
+    $spacing: stretch,
+    $alignment: stretch,
+    $direction: column,
+    $wrap: nowrap
+  );
+  @include vertical-rhythm(4);
 
   height: 100%;
 }

@@ -1,7 +1,12 @@
 @import "../../styles/mixins";
 
 .CandidateList {
-  @include flex($spacing: stretch, $alignment: stretch, $direction: column, $wrap: nowrap);
+  @include flex(
+    $spacing: stretch,
+    $alignment: stretch,
+    $direction: column,
+    $wrap: nowrap
+  );
 
   flex: 1;
 
