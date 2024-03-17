@@ -1,9 +1,5 @@
 @import "./mixins";
 
-html {
-  font-size: 10px;
-}
-
 html,
 body,
 #root {
@@ -23,8 +19,12 @@ body,
 }
 
 main {
-  padding: 3rem $padding-main-side;
-  flex-grow: 1; /* Take up remaining vertical space */
+  padding: 2rem $padding-main-side;
+  flex-grow: 1;
+
+  @media screen and (width <= 768px) {
+    padding: 2rem ($padding-main-side / 4);
+  }
 }
 
 footer {

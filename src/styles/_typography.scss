@@ -1,7 +1,28 @@
+html {
+  font-size: 10px;
+}
+
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 h1 {
   margin: 0;
+  font-size: 2.86rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+div {
+  &.MuiTypography-root {
+    font-size: 1.9rem;
+  }
+}
+
+input {
+  &.MuiInputBase-input {
+    font-size: 1.6rem;
+  }
 }
