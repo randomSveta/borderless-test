@@ -1,6 +1,11 @@
 import React from "react";
+
 import { ISearchBarProps } from "./interfaces";
+
 import { Autocomplete, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
+import "./SearchBar.scss";
 
 const SearchBar: React.FC<ISearchBarProps> = ({
   candidates = [],
@@ -25,10 +30,18 @@ const SearchBar: React.FC<ISearchBarProps> = ({
       onInputChange={(_, value) => handleSearch(value)}
       renderInput={(params) => (
         <TextField
+          className="search-text"
           {...params}
-          label="Search"
+          label=""
           variant="outlined"
           autoComplete="on"
+          placeholder="Search"
+          InputProps={{
+            ...params.InputProps,
+            startAdornment: (
+              <SearchIcon color="disabled" sx={{ mr: 1, my: 0.5 }} />
+            ),
+          }}
         />
       )}
     />
