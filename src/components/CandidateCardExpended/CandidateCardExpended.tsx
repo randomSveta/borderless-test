@@ -13,7 +13,7 @@ const CandidateCardExpended: React.FC<{ candidate: ICandidate }> = ({
   const { picture, name, location } = candidate;
 
   return (
-    <Card className="CandidateCardExpended" sx={{ maxWidth: 345 }}>
+    <Card className="CandidateCardExpended">
       <CardMedia
         component="img"
         height="100"
