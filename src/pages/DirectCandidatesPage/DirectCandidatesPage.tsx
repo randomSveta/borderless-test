@@ -27,7 +27,7 @@ const DirectCandidatesPage: React.FC = () => {
   useEffect(() => {
     if (!candidateList.length) {
       axios
-        .get(`${apiUrl}&inc=name,login,picture,location,email`)
+        .get(apiUrl)
         .then((response) => {
           setCandidateList(response.data.results);
           setIsCandidateListLoaded(true);
