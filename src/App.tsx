@@ -18,7 +18,7 @@ const App: React.FC = () => {
   return (
     <GlobalContext.Provider value={apiUrl}>
       <ThemeWrapper>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <NavigationBar />
           <main>
             <Routes>
