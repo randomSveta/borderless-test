@@ -18,10 +18,12 @@ body,
     $direction: column,
     $wrap: nowrap
   );
+
+  background-color: #f9fafa;
 }
 
 main {
-  padding: 1rem;
+  padding: 3rem $padding-main-side;
   flex-grow: 1; /* Take up remaining vertical space */
 }
 
