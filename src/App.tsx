@@ -4,6 +4,7 @@ import GlobalContext from "./GlobalContext";
 
 import DirectCandidatesPage from "./pages/DirectCandidatesPage";
 import CandidatePage from "./pages/CandidatePage";
+import AboutPage from "./pages/AboutPage/AboutPage";
 
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
@@ -25,6 +26,7 @@ const App: React.FC<AppProps> = () => {
             <Routes>
               <Route path="/" element={<DirectCandidatesPage />} />
               <Route path="/candidate/:username" element={<CandidatePage />} />
+              <Route path="/about" element={<AboutPage />} />
             </Routes>
           </main>
           <footer>
