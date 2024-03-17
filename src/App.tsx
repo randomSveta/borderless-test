@@ -12,9 +12,7 @@ import ThemeWrapper from "./ThemeWrapper";
 
 import "./App.scss";
 
-type AppProps = {};
-
-const App: React.FC<AppProps> = () => {
+const App: React.FC = () => {
   const seed = useContext(GlobalContext);
 
   return (
