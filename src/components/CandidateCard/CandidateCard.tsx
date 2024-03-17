@@ -44,6 +44,7 @@ const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
                 <div className="contacts" key={index}>
                   <Typography
                     className="contacts__row"
+                    // @ts-ignore
                     variant="body3"
                     color="text.secondary"
                   >

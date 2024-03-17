@@ -38,6 +38,7 @@ const theme = createTheme({
     body2: {
       fontSize: "1.6rem",
     },
+    /* @ts-ignore*/
     body3: {
       fontSize: "1.4rem",
     },

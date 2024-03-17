@@ -35,6 +35,7 @@ const CandidateCardExpended: React.FC<{ candidate: ICandidate }> = ({
           {location.country}
         </Typography>
         <Divider />
+        {/* @ts-ignore*/}
         <Typography variant="body3" color="text.secondary">
           {`${gender} / ${new Date(registered.date).toLocaleString("en-US", {
             weekday: "long",
