@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 
+import GlobalContext from "../../GlobalContext";
+
 import { ICandidate } from "./interfaces";
 
 import { CircularProgress, Paper } from "@mui/material";
@@ -11,9 +13,7 @@ import CandidateList from "../../components/CandidateList";
 import "./DirectCandidatesPage.scss";
 
 const DirectCandidatesPage: React.FC = () => {
-  const [candidateList, setCandidateList] = useState<ICandidate[]>(
-    JSON.parse(sessionStorage.getItem("candidates") || "[]") || [],
-  );
+  const [candidateList, setCandidateList] = useState<ICandidate[]>([]);
   const [filteredCandidates, setFilteredCandidates] = useState<
     ICandidate[] | []
   >([]);
@@ -22,18 +22,14 @@ const DirectCandidatesPage: React.FC = () => {
   const [candidatesLoadingError, setCandidatesLoadingError] =
     useState<AxiosError | null>(null);
 
+  const apiUrl = useContext(GlobalContext);
+
   useEffect(() => {
     if (!candidateList.length) {
       axios
-        .get(
-          "https://randomuser.me/api/?results=60&inc=name,gender,nat,login&noinfo",
-        )
+        .get(apiUrl)
         .then((response) => {
           setCandidateList(response.data.results);
-          sessionStorage.setItem(
-            "candidates",
-            JSON.stringify(response.data.results),
-          );
           setIsCandidateListLoaded(true);
         })
         .catch((error: AxiosError) => {
