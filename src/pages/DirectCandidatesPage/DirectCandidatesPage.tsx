@@ -56,7 +56,7 @@ const DirectCandidatesPage: React.FC = () => {
     <div className="DirectCandidatesPage">
       <Paper elevation={1} className="direct-candidates__info">
         <h1>Direct Candidates</h1>
-        <Typography variant="body2" color="text.secondary">
+        <Typography color="text.secondary">
           These candidates have applied to you directly
         </Typography>
       </Paper>
