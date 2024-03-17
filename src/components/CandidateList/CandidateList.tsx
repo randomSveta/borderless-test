@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { ICandidateListProps } from "./interfaces";
+
 import CandidateCard from "../../components/CandidateCard";
 import { List, ListItem, Pagination } from "@mui/material";
 
@@ -18,10 +20,13 @@ const CandidateList: React.FC<ICandidateListProps> = ({
 
   return (
     <div className="CandidateList">
-      <List>
+      <List className="candidate-list">
         {filteredCandidates
           .map((candidateInfo) => (
-            <ListItem key={`candidate-${candidateInfo.login.username}`}>
+            <ListItem
+              className="candidate-list__item"
+              key={`candidate-${candidateInfo.login.username}`}
+            >
               <CandidateCard candidate={candidateInfo} />
             </ListItem>
           ))
@@ -29,6 +34,7 @@ const CandidateList: React.FC<ICandidateListProps> = ({
       </List>
       {filteredCandidates.length > 8 ? (
         <Pagination
+          className="Pagination"
           count={Math.ceil(filteredCandidates.length / itemsPerPage)}
           page={page}
           onChange={handlePageChange}

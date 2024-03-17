@@ -8,6 +8,8 @@ import ErrorAxios from "../../components/ErrorAxios";
 import SearchBar from "../../components/SearchBar";
 import CandidateList from "../../components/CandidateList";
 
+import "./DirectCandidatesPage.scss";
+
 const DirectCandidatesPage: React.FC = () => {
   const [candidateList, setCandidateList] = useState<ICandidate[]>(
     JSON.parse(sessionStorage.getItem("candidates") || "[]") || [],
@@ -17,7 +19,7 @@ const DirectCandidatesPage: React.FC = () => {
   >([]);
   const [isCandidateListLoaded, setIsCandidateListLoaded] =
     useState<boolean>(false);
-  const [candidatesLoadingError, setCandidateLoadingError] =
+  const [candidatesLoadingError, setCandidatesLoadingError] =
     useState<AxiosError | null>(null);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const DirectCandidatesPage: React.FC = () => {
         })
         .catch((error: AxiosError) => {
           console.error("Error fetching data:", error);
-          setCandidateLoadingError(error);
+          setCandidatesLoadingError(error);
           setIsCandidateListLoaded(true);
         });
     } else {
