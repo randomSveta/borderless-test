@@ -1,3 +1,8 @@
-.CandidateCard{
+.CandidateCard {
+  width: 100%;
   padding: 0;
+
+  > div {
+    width: 100%;
+  }
 }
