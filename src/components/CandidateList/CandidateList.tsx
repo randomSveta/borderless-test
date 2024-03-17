@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ICandidateListProps } from "./interfaces";
 
 import CandidateCard from "../../components/CandidateCard";
-import { List, ListItem, Pagination } from "@mui/material";
+import { Pagination, Grid } from "@mui/material";
 
 import "./CandidateList.scss";
 
@@ -22,18 +22,19 @@ const CandidateList: React.FC<ICandidateListProps> = ({
 
   return (
     <section className="CandidateList">
-      <List className="candidate-list">
+      <Grid
+        container
+        spacing={{ xs: 1, md: 2 }}
+        columns={{ xs: 1, sm: 8, md: 16 }}
+      >
         {filteredCandidates
-          .map((candidateInfo) => (
-            <ListItem
-              className="candidate-list__item"
-              key={`candidate-${candidateInfo.login.username}`}
-            >
+          .map((candidateInfo, index) => (
+            <Grid item xs={2} sm={4} md={4} key={index}>
               <CandidateCard candidate={candidateInfo} />
-            </ListItem>
+            </Grid>
           ))
           .slice(startIndex, endIndex)}
-      </List>
+      </Grid>
       {filteredCandidates.length > 8 ? (
         <Pagination
           className="Pagination"
