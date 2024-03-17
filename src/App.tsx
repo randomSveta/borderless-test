@@ -13,10 +13,10 @@ import ThemeWrapper from "./ThemeWrapper";
 import "./App.scss";
 
 const App: React.FC = () => {
-  const seed = useContext(GlobalContext);
+  const apiUrl = useContext(GlobalContext);
 
   return (
-    <GlobalContext.Provider value={seed}>
+    <GlobalContext.Provider value={apiUrl}>
       <ThemeWrapper>
         <BrowserRouter>
           <NavigationBar />
