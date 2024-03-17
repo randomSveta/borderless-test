@@ -1,18 +1,14 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-interface Params {
-  [key: string]: string | undefined;
-}
+import CandidateCardExpended from "../../components/CandidateCardExpended";
 
 const CandidatePage: React.FC = () => {
-  const { id } = useParams<Params>();
+  const candidateData = useLocation().state?.candidateData;
 
-  return (
-    <div className="CandidatePage">
-      <h1>Candidate profile id: {id}!</h1>
-    </div>
-  );
+  return candidateData ? (
+    <CandidateCardExpended candidate={candidateData} />
+  ) : null;
 };
 
 export default CandidatePage;

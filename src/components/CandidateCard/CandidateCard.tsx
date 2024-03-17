@@ -10,11 +10,13 @@ import { CardActionArea } from "@mui/material";
 
 const CandidateCard: React.FC<{ candidate: ICandidate }> = ({ candidate }) => {
   const { picture, name, location, login } = candidate;
+
   return (
     <Link
       to={`/candidate/${login.username}`}
-      style={{ textDecoration: "none" }}
+      state={{ candidateData: candidate }}
       className="CandidateCard"
+      style={{ textDecoration: "none" }}
     >
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
