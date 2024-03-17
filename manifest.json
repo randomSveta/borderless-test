@@ -1,0 +1,16 @@
+{
+  "name": "Borderless",
+  "short_name": "Borderless",
+  "description": "List of user profiles",
+  "icons": [
+    {
+      "src": "icon-b-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "lang": "en"
+}
