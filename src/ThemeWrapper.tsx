@@ -2,6 +2,14 @@ import { ReactNode } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 
+declare module "@mui/material/styles" {
+  interface TypographyOptions {
+    body3?: {
+      fontSize?: string;
+    };
+  }
+}
+
 interface ThemeWrapperProps {
   children: ReactNode;
 }
@@ -29,6 +37,9 @@ const theme = createTheme({
     },
     body2: {
       fontSize: "1.6rem",
+    },
+    body3: {
+      fontSize: "1.4rem",
     },
     button: {
       fontSize: "1.4rem",
