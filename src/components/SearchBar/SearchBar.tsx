@@ -14,7 +14,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({
   const handleSearch = (value: string) => {
     const filtered = candidates.filter((candidate) => {
       const { name } = candidate;
-      const fullName = `${name.title} ${name.first} ${name.last}`;
+      const fullName = `${name.first} ${name.last}`;
       return fullName.toLowerCase().includes(value.toLowerCase());
     });
     setFilteredCandidates(filtered);
