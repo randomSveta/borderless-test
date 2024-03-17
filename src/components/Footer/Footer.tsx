@@ -1,6 +1,8 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, Container } from "@mui/material";
 
+import "./Footer.scss";
+
 const Footer: React.FC = () => {
   return (
     <AppBar className="Footer" position="static" color="primary">
