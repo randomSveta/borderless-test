@@ -23,7 +23,7 @@ main {
   flex-grow: 1;
 
   @media screen and (width <= 768px) {
-    padding: 2rem ($padding-main-side / 4);
+    padding: 2rem calc($padding-main-side / 4);
   }
 }
 
