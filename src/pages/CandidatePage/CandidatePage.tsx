@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios, { AxiosError } from "axios";
-import GlobalContext from "../../GlobalContext";
+import { useGlobalContext } from "../../GlobalContext";
 
 import { ICandidate } from "../DirectCandidatesPage/interfaces";
 
@@ -17,42 +17,42 @@ const CandidatePage: React.FC = () => {
   const [candidateDataLoadingError, setCandidateDataLoadingError] =
     useState<AxiosError | null>(null);
   const { username } = useParams();
-
-  const apiUrl = useContext(GlobalContext);
+  const apiUrl: string | null = useGlobalContext();
 
   useEffect(() => {
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        const currentCandidate = response.data.results.filter(
-          (candidate: { login: { username: string } }) =>
-            candidate.login.username === username,
-        )[0];
-        setCandidateExpandedData(currentCandidate);
-        setIsCandidateDataLoaded(true);
-      })
-      .catch((error: AxiosError) => {
-        console.error("Error fetching data:", error);
-        setCandidateDataLoadingError(error);
-        setIsCandidateDataLoaded(true);
-      });
+    if (apiUrl) {
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          const currentCandidate = response.data.results.filter(
+            (candidate: { login: { username: string } }) =>
+              candidate.login.username === username,
+          )[0];
+          setCandidateExpandedData(currentCandidate);
+        })
+        .catch((error: AxiosError) => {
+          console.error("Error fetching data:", error);
+          setCandidateDataLoadingError(error);
+        })
+        .finally(() => {
+          setIsCandidateDataLoaded(true);
+        });
+    }
   }, []);
 
   const candidateCard = candidateExpandedData ? (
     <CandidateCardExpended candidate={candidateExpandedData} />
   ) : null;
 
-  const candidateProfile = candidateDataLoadingError ? (
-    <ErrorAxios error={candidateDataLoadingError} />
-  ) : (
-    candidateCard
-  );
+  if (candidateDataLoadingError) {
+    return <ErrorAxios error={candidateDataLoadingError} />;
+  }
 
-  return (
-    <div className="CandidatePage">
-      {isCandidateDataLoaded ? candidateProfile : <CircularProgress />}
-    </div>
-  );
+  if (!isCandidateDataLoaded) {
+    return <CircularProgress data-testid="loading-spinner" />;
+  }
+
+  return <div className="CandidatePage">{candidateCard}</div>;
 };
 
 export default CandidatePage;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 
-import GlobalContext from "../../GlobalContext";
+import { useGlobalContext } from "../../GlobalContext";
 
 import { ICandidate } from "./interfaces";
 
@@ -22,23 +22,22 @@ const DirectCandidatesPage: React.FC = () => {
   const [candidatesLoadingError, setCandidatesLoadingError] =
     useState<AxiosError | null>(null);
 
-  const apiUrl = useContext(GlobalContext);
+  const apiUrl: string | null = useGlobalContext();
 
   useEffect(() => {
-    if (!candidateList.length) {
+    if (apiUrl) {
       axios
         .get(apiUrl)
         .then((response) => {
           setCandidateList(response.data.results);
-          setIsCandidateListLoaded(true);
         })
         .catch((error: AxiosError) => {
-          console.error("Error fetching data:", error);
+          console.error("Error fetching data:");
           setCandidatesLoadingError(error);
+        })
+        .finally(() => {
           setIsCandidateListLoaded(true);
         });
-    } else {
-      setIsCandidateListLoaded(true);
     }
   }, []);
 
@@ -46,14 +45,16 @@ const DirectCandidatesPage: React.FC = () => {
     setFilteredCandidates(candidateList);
   }, [candidateList]);
 
-  const candidateProfileList = candidatesLoadingError ? (
-    <ErrorAxios error={candidatesLoadingError} />
-  ) : (
-    <CandidateList filteredCandidates={filteredCandidates} />
-  );
+  if (candidatesLoadingError) {
+    return <ErrorAxios error={candidatesLoadingError} />;
+  }
+
+  if (!isCandidateListLoaded) {
+    return <CircularProgress data-testid="loading-spinner" />;
+  }
 
   return (
-    <div className="DirectCandidatesPage">
+    <div className="DirectCandidatesPage" data-testid="direct-candidates-page">
       <Paper elevation={1} className="direct-candidates__info">
         <h1>Direct Candidates</h1>
         <Typography color="text.secondary">
@@ -66,8 +67,7 @@ const DirectCandidatesPage: React.FC = () => {
           candidates={candidateList}
         />
       </div>
-
-      {isCandidateListLoaded ? candidateProfileList : <CircularProgress />}
+      <CandidateList filteredCandidates={filteredCandidates} />
     </div>
   );
 };
