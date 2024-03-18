@@ -1,13 +1,17 @@
 .SearchBar {
   width: 28rem;
 
+  > div {
+    background-color: #fff;
+  }
+
+  .search-text {
+    > div {
+      padding: 0 1rem;
+    }
+  }
+
   @media screen and (width <= 768px) {
     width: 100%;
-
-    .search-text {
-      > div {
-        padding: 0 1rem;
-      }
-    }
   }
 }
