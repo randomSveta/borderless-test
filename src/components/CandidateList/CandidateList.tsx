@@ -49,12 +49,28 @@ const CandidateList: React.FC = () => {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
+  let candidates = (
+    <Grid
+      container
+      spacing={{ xs: 1, md: 2 }}
+      columns={{ xs: 1, sm: 8, md: 16 }}
+    >
+      {filteredCandidates
+        .slice(startIndex, endIndex)
+        .map((candidateInfo, index) => (
+          <Grid item xs={2} sm={4} md={4} key={index}>
+            <CandidateCard candidate={candidateInfo} />
+          </Grid>
+        ))}
+    </Grid>
+  );
+
   if (!isCandidateListLoaded) {
-    return <CircularProgress data-testid="loading-spinner" />;
+    candidates = <CircularProgress data-testid="loading-spinner" />;
   }
 
   if (candidatesLoadingError) {
-    return <ErrorAxios error={candidatesLoadingError} />;
+    candidates = <ErrorAxios error={candidatesLoadingError} />;
   }
 
   return (
@@ -65,19 +81,7 @@ const CandidateList: React.FC = () => {
           candidates={candidateList}
         />
       </div>
-      <Grid
-        container
-        spacing={{ xs: 1, md: 2 }}
-        columns={{ xs: 1, sm: 8, md: 16 }}
-      >
-        {filteredCandidates
-          .slice(startIndex, endIndex)
-          .map((candidateInfo, index) => (
-            <Grid item xs={2} sm={4} md={4} key={index}>
-              <CandidateCard candidate={candidateInfo} />
-            </Grid>
-          ))}
-      </Grid>
+      {candidates}
       {filteredCandidates.length > itemsPerPage && (
         <Pagination
           className="Pagination"
