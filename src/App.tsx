@@ -18,7 +18,7 @@ const App: React.FC = () => {
   return (
     <GlobalContext.Provider value={apiUrl}>
       <ThemeWrapper>
-        <BrowserRouter>
+        <BrowserRouter basename="/borderless-test">
           <NavigationBar />
           <main>
             <Routes>
