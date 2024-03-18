@@ -7,7 +7,7 @@ import "./NavigationBar.scss";
 
 const NavigationBar: React.FC = () => {
   return (
-    <AppBar className="NavigationBar" position="static">
+    <AppBar className="NavigationBar" position="static" data-testid="nav-bar">
       <Toolbar>
         <Button component={Link} to="/" color="inherit">
           Candidates

@@ -5,7 +5,12 @@ import "./Footer.scss";
 
 const Footer: React.FC = () => {
   return (
-    <AppBar className="Footer" position="static" color="primary">
+    <AppBar
+      className="Footer"
+      position="static"
+      color="primary"
+      data-testid="footer"
+    >
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="body1" color="inherit">

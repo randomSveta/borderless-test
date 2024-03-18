@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ICandidate } from "../../pages/DirectCandidatesPage/interfaces";
+import { ICandidate } from "../../pages/CandidatePage/interfaces";
 
 import {
   Card,
@@ -17,7 +17,10 @@ const CandidateCardExpended: React.FC<{ candidate: ICandidate }> = ({
   const { picture, name, location, cell, gender, registered } = candidate;
 
   return (
-    <Card className="CandidateCardExpended">
+    <Card
+      className="CandidateCardExpended"
+      data-testid="candidate-card-expended"
+    >
       <CardMedia
         component="img"
         image={picture.large}

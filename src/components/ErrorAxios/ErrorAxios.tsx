@@ -5,11 +5,7 @@ import { IAxiosErrorProps } from "./interfaces";
 
 const ErrorAxios: React.FC<IAxiosErrorProps> = ({ error }) => {
   return (
-    <Alert
-      severity="error"
-      className="ErrorAxios"
-      data-testid="error-message-alert"
-    >
+    <Alert severity="error" className="ErrorAxios" data-testid="error-axios">
       {error ? (
         error.response ? (
           <div>
