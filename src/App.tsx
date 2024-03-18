@@ -14,11 +14,12 @@ import "./App.scss";
 
 const App: React.FC = () => {
   const apiUrl = useContext(GlobalContext);
+  const basename = process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/";
 
   return (
     <GlobalContext.Provider value={apiUrl}>
       <ThemeWrapper>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename={basename}>
           <NavigationBar />
           <main>
             <Routes>
