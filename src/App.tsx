@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalProvider } from "./GlobalContext";
 
@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <NavigationBar />
           <main>
             <Routes>
-              <Route path="/" element={<DirectCandidatesPage test={false} />} />
+              <Route path="/" element={<DirectCandidatesPage />} />
               <Route path="/candidate/:username" element={<CandidatePage />} />
               <Route path="/about" element={<AboutPage />} />
             </Routes>
