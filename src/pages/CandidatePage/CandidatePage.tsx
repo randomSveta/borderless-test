@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { useGlobalContext } from "../../GlobalContext";
 
-import { ICandidate } from "../DirectCandidatesPage/interfaces";
+import { ICandidate } from "./interfaces";
 
 import CandidateCardExpended from "../../components/CandidateCardExpended";
 import ErrorAxios from "../../components/ErrorAxios";

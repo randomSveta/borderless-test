@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { ICandidate } from "../../pages/DirectCandidatesPage/interfaces";
+import { ICandidate } from "../../pages/CandidatePage/interfaces";
 import {
   CardActionArea,
   Typography,
