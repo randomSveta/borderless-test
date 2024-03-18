@@ -1,7 +1,16 @@
-import React from "react";
+import { createContext, useContext, ReactNode } from "react";
 
-const GlobalContext = React.createContext<string>(
-  "https://randomuser.me/api/?seed=test&results=50",
+type ApiUrl = string | null;
+
+const GlobalContext = createContext<ApiUrl>(null);
+
+export const useGlobalContext = () => useContext(GlobalContext);
+
+type GlobalProviderProps = {
+  children: ReactNode;
+  apiUrl: ApiUrl;
+};
+
+export const GlobalProvider = ({ children, apiUrl }: GlobalProviderProps) => (
+  <GlobalContext.Provider value={apiUrl}>{children}</GlobalContext.Provider>
 );
-
-export default GlobalContext;

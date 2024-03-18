@@ -23,6 +23,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({
   return (
     <Autocomplete
       className="SearchBar"
+      data-testid="search-bar"
       freeSolo
       options={candidates.map(
         (candidate) => `${candidate.name.first} ${candidate.name.last}`,
