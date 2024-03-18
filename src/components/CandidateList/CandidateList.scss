@@ -8,4 +8,10 @@
 
     margin-top: 2rem;
   }
+
+  > .direct-candidates__filters {
+    @include flex(flex-end);
+
+    margin-bottom: 2rem;
+  }
 }
