@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { CircularProgress } from "@mui/material";
-import { useGlobalContext } from "../../GlobalContext"; // Import useGlobalContext
+import { useGlobalContext } from "../../GlobalContext";
 import { ICandidate } from "../../pages/CandidatePage/interfaces";
 import ErrorAxios from "../../components/ErrorAxios";
 import CandidateCard from "../../components/CandidateCard";
